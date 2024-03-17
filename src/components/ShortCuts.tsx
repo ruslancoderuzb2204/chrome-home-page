@@ -7,6 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Popover from '@mui/material/Popover';
+import { useRouter } from 'next/navigation';
 
 interface Shortcut {
   id: string;
@@ -92,22 +93,20 @@ export default function FormDialog() {
     setShortcuts(updatedShortcuts);
     localStorage.setItem('shortcuts', JSON.stringify(updatedShortcuts));
   };
-
+const router = useRouter()
   // Function to check if the form is valid
   const isFormValid = name.trim() !== '' && url.trim() !== '';
-
+const moveShortCut = (url:string)=>{
+  router.push(`https://${url}`)
+}
   return (
     <React.Fragment>
       {/* "Add shortcut" button */}
       <div className='flex gap-x-2'>
-        <div className='grid grid-cols-3 gap-2'>
-          {shortcuts.length === 0 ? (
-            <div className='flex justify-center items-center h-full bg-slate-100 rounded'>
-              <p className='text-gray-500 text-center'>No shortcuts available</p>
-            </div>
-          ) : (
+        <div className='grid cursor-pointer grid-cols-3 gap-2'>
+          {shortcuts  &&
             shortcuts.map((shortcut) => (
-              <div key={shortcut.id} className="border w-40 h-32 rounded p-4 flex items-center flex-col">
+              <div onClick={()=>moveShortCut(shortcut.url)} key={shortcut.id} className="border w-40 h-32 rounded p-4 flex items-center flex-col">
                 <div className="flex items-center justify-center bg-white w-12 h-12 rounded-full text-2xl text-black">
                   <p>{shortcut.name[0]}</p>
                 </div>
@@ -118,7 +117,7 @@ export default function FormDialog() {
                 </div>
               </div>
             ))
-          )}
+          }
         </div>
         <Button variant='contained' className='w-40 h-32' onClick={handleClickOpen}>
           <div className='flex flex-col justify-center items-center'>
