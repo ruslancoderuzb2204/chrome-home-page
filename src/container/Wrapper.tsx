@@ -9,8 +9,9 @@ const Wrapper = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '100vh',
-      gap:"20px 10px"
+      height:'100%',
+      gap:"20px 0",
+      marginTop:"-100px"
     }}>
       <Title/>
       <SearchBar/>

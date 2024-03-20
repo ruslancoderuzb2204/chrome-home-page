@@ -102,8 +102,8 @@ const moveShortCut = (url:string)=>{
   return (
     <React.Fragment>
       {/* "Add shortcut" button */}
-      <div className='flex gap-x-2'>
-        <div className='grid cursor-pointer grid-cols-3 gap-2'>
+      <div className='flex gap-2 justify-center items-center flex-wrap w-[680px]'>
+        <div className='flex  gap-2'>
           {shortcuts  &&
             shortcuts.map((shortcut) => (
               <div key={shortcut.id} className="border w-40 h-32 rounded p-4 flex items-center flex-col">
@@ -121,7 +121,7 @@ const moveShortCut = (url:string)=>{
             ))
           }
         </div>
-        <Button variant='contained' className='w-40 h-32' onClick={handleClickOpen}>
+        <Button variant='contained'  className='w-40 h-32 bg-slate-400' onClick={handleClickOpen}>
           <div className='flex flex-col justify-center items-center'>
             <div className="flex items-center justify-center  w-12 h-12 rounded-full text-2xl text-black">
               <p>+</p>
