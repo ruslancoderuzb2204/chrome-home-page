@@ -106,12 +106,14 @@ const moveShortCut = (url:string)=>{
         <div className='grid cursor-pointer grid-cols-3 gap-2'>
           {shortcuts  &&
             shortcuts.map((shortcut) => (
-              <div onClick={()=>moveShortCut(shortcut.url)} key={shortcut.id} className="border w-40 h-32 rounded p-4 flex items-center flex-col">
-                <div className="flex items-center justify-center bg-white w-12 h-12 rounded-full text-2xl text-black">
+              <div key={shortcut.id} className="border w-40 h-32 rounded p-4 flex items-center flex-col">
+                <div  onClick={()=>moveShortCut(shortcut.url)} >
+                <div className="flex items-center justify-center bg-white w-12 h-12 rounded-full text-2xl text-black  ">
                   <p>{shortcut.name[0]}</p>
                 </div>
-                <p className='mt-2 text-xl text-white'>{shortcut.name.length > 9 ? shortcut.name.slice(0, 9) + "..." : shortcut.name}</p>
-                <div className="flex gap-x-2 mt-2">
+                <p className=' text-xl text-center text-white'>{shortcut.name.length > 9 ? shortcut.name.slice(0, 9) + "..." : shortcut.name}</p>
+                </div>
+                <div className="flex gap-x-2 ">
                   <Button onClick={(e) => handleEditShortcut(shortcut.id, e)}>Edit</Button>
                   <Button onClick={() => handleRemoveShortcut(shortcut.id)}>Remove</Button>
                 </div>
@@ -121,7 +123,7 @@ const moveShortCut = (url:string)=>{
         </div>
         <Button variant='contained' className='w-40 h-32' onClick={handleClickOpen}>
           <div className='flex flex-col justify-center items-center'>
-            <div className="flex items-center justify-center bg-white w-12 h-12 rounded-full text-2xl text-black">
+            <div className="flex items-center justify-center  w-12 h-12 rounded-full text-2xl text-black">
               <p>+</p>
             </div>
             <p className='mt-2 text-sm'>Add shortcut</p>
@@ -186,27 +188,7 @@ const moveShortCut = (url:string)=>{
         </DialogActions>
       </Dialog>
 
-      {/* Popover for editing a shortcut */}
-      <Popover
-        open={Boolean(popoverAnchor)}
-        anchorEl={popoverAnchor}
-        onClose={() => setPopoverAnchor(null)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <div>
-          <Button onClick={() => setPopoverAnchor(null)}>Close</Button>
-        </div>
-        <Button onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleSubmit(event)}>Save</Button>
-
-
-      </Popover>
+     
     </React.Fragment>
   );
 }

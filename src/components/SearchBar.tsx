@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Mic, Search } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import { Mic, Search } from "@mui/icons-material";
 
 const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
