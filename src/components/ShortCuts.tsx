@@ -106,9 +106,9 @@ const moveShortCut = (url:string)=>{
         <div className='flex  gap-2'>
           {shortcuts  &&
             shortcuts.map((shortcut) => (
-              <div key={shortcut.id} className="border w-40 h-32 rounded p-4 flex items-center flex-col">
+              <div key={shortcut.id} className="border w-40 h-32 rounded p-4 flex  items-center flex-col">
                 <div  onClick={()=>moveShortCut(shortcut.url)} >
-                <div className="flex items-center justify-center bg-white w-12 h-12 rounded-full text-2xl text-black  ">
+                <div className="flex items-center justify-center mx-auto bg-white w-12 h-12 rounded-full text-2xl text-black  ">
                   <p>{shortcut.name[0]}</p>
                 </div>
                 <p className=' text-xl text-center text-white'>{shortcut.name.length > 9 ? shortcut.name.slice(0, 9) + "..." : shortcut.name}</p>
